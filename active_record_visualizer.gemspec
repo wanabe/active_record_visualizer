@@ -9,9 +9,9 @@ Gem::Specification.new do |s|
   s.version     = ActiveRecordVisualizer::VERSION
   s.authors     = ["wanabe"]
   s.email       = ["s.wanabe@gmail.com"]
-  s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of ActiveRecordVisualizer."
-  s.description = "TODO: Description of ActiveRecordVisualizer."
+  s.homepage    = ""
+  s.summary     = "ActiveRecord relation Visualizer."
+  s.description = "ActiveRecord relation Visualizer."
   s.license     = "MIT"
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]

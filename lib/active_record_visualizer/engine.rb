@@ -4,6 +4,10 @@ module ActiveRecordVisualizer
   class Engine < ::Rails::Engine
     isolate_namespace ActiveRecordVisualizer
 
+    initializer "active_record_visualizer.initialize" do |app|
+      app.eager_load!
+    end
+
     initializer "active_record_visualizer.helper" do
       ActiveSupport.on_load :action_controller do
         ActionController::Base.helper Webpacker::Helper

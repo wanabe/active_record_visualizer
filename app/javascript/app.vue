@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <button @click="load()">Load</button>
+    <p v-if="!loaded">loading ...</p>
     <ul>
       <li v-for="modelClass in modelClasses.nodes">
         <input type="checkbox" name="model_class" v-bind:value="modelClass.name" checked="checked"></input>
@@ -24,6 +24,7 @@
     data: function () {
       return {
         raw: '',
+        loaded: false,
         modelClasses: {}
       }
     },
@@ -49,10 +50,14 @@
         }).then((result) => {
           this.$data.raw = result.data
           this.$data.modelClasses = result.data.modelClasses
+          this.$data.loaded = true
         }).catch((error) => {
           alert(error)
         })
       }
+    },
+    mounted() {
+      this.load()
     }
   }
 </script>

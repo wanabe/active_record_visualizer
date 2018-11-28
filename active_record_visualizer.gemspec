@@ -14,7 +14,8 @@ Gem::Specification.new do |s|
   s.description = "ActiveRecord relation Visualizer."
   s.license     = "MIT"
 
-  s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
+  s.executables << 'active_record_visualizer'
+  s.files = Dir["{app,bin,exe,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
 
   s.add_dependency "rails", "~> 5.2.0"
   s.add_dependency "webpacker", "~> 3.5"

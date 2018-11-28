@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+Dir.chdir Gem::Specification.find_by_name("active_record_visualizer").gem_dir
+system "yarn install"
+exec *ARGV

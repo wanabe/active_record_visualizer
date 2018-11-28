@@ -14,3 +14,4 @@ Gemfile.lock
 /node_modules
 yarn-debug.log*
 .yarn-integrity
+/tmp/cache/webpacker

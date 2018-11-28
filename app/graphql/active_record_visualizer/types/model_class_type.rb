@@ -7,7 +7,7 @@ module ActiveRecordVisualizer
         argument :except, [String], required: false
       end
       def associations(except_classes: [], except: [])
-        Types::ModelAssociationType.filter(self, except_classes: except_classes, except: except)
+        Types::ModelAssociationType.filter(object, except_classes: except_classes, except: except)
       end
 
       def self.filter(parent, except: [], target: nil)

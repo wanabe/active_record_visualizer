@@ -8,7 +8,7 @@ module ActiveRecordVisualizer
       end
 
       def self.filter(parent, except_classes: [], except: [], target_classes: nil, target: nil)
-        associations = parent.object.reflect_on_all_associations
+        associations = parent.reflect_on_all_associations
         associations.select! do |association|
           association.klass rescue next nil
           next false if except_classes.include?(association.active_record.name)

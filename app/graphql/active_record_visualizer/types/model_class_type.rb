@@ -12,7 +12,13 @@ module ActiveRecordVisualizer
 
       def self.filter(parent, except: [])
         Rails.application.eager_load!
-        ActiveRecord::Base.descendants.select {|klass| !except.include?(klass.name) }.sort_by(&:name)
+        model_classes = ActiveRecord::Base.descendants
+        model_classes.select! do |klass|
+          next false if except.include?(klass.name)
+          true
+        end
+        model_classes.sort_by!(&:name)
+        model_classes
       end
     end
   end

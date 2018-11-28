@@ -8,13 +8,16 @@ module ActiveRecordVisualizer
       end
 
       def self.filter(parent, except_classes: [], except: [])
-        parent.object.reflect_on_all_associations.select do |association|
+        associations = parent.object.reflect_on_all_associations
+        associations.select! do |association|
           association.klass rescue next nil
           next false if except_classes.include?(association.active_record.name)
           next false if except_classes.include?(association.klass.name)
           next false if except.include?("#{association.active_record.name}##{association.name}")
           true
-        end.sort_by(&:name)
+        end
+        associations.sort_by!(&:name)
+        associations
       end
     end
   end

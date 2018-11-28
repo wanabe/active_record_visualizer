@@ -10,11 +10,12 @@ module ActiveRecordVisualizer
         Types::ModelAssociationType.filter(self, except_classes: except_classes, except: except)
       end
 
-      def self.filter(parent, except: [])
+      def self.filter(parent, except: [], target: nil)
         Rails.application.eager_load!
         model_classes = ActiveRecord::Base.descendants
         model_classes.select! do |klass|
           next false if except.include?(klass.name)
+          next false if target && !target.include?(klass.name)
           true
         end
         model_classes.sort_by!(&:name)

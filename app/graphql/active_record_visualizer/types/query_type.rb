@@ -6,9 +6,10 @@ module ActiveRecordVisualizer
 
       field :model_classes, Types::ModelClassType.connection_type, null: false do
         argument :except, [String], required: false
+        argument :target, [String], required: false
       end
-      def model_classes(except: [])
-        Types::ModelClassType.filter(self, except: except)
+      def model_classes(except: [], target: nil)
+        Types::ModelClassType.filter(self, except: except, target: target)
       end
     end
   end
